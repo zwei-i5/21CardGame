@@ -8,6 +8,6 @@ public:
 	//playerTurn
 	bool playerTurn(Player* playe,CardManager*cardManager);
 	//CPUTurn
-	bool CPUTurn(CPU* cpu, CardManager* cardManager);
+	void CPUTurn(Player*player,CPU* cpu, CardManager* cardManager);
 };
 

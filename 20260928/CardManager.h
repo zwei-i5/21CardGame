@@ -3,14 +3,15 @@
 class CardManager
 {
 private:
-	int deck[44];
-	int top;
+	int deck[DECK];
+	int cardCount;
 public:
 	//コンストラクタ
 	CardManager();
 	//カード生成
 	void CreateCards();
-	
+	//シャッフル
+	void Shuffle();
 	//カードを引く
 	int DrawCard();
 	//残りのカード枚数

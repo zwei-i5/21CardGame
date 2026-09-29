@@ -5,36 +5,53 @@ using namespace std;
 
 CardManager::CardManager()
 {
-	top = 0;
+	cardCount = DECK;
 }
 
 void CardManager::CreateCards()
 {
 	//カードを生成
 	int index = 0;
-	for (int i = MIN_CARD; i < MAX_CARD; i++)
+	for (int number = MIN_CARD; number < MAX_CARD; number++)
 	{
-		for (int j = 0; j < SAME_CARD; j++)
+		for (int i = 0; i < SAME_CARD; i++)
 		{
-			deck[index] = i;
-			index;
+			deck[index] = number;
+			index++;
 		}
 	}
+	cardCount = DECK;
 	
+}
+
+void CardManager::Shuffle()
+{
 	//シャッフル
 	for (int i = DECK - 1; i > 0; i--)
 	{
-		int shuffle = rand() % (i + 1);
+		int shuffle = i + rand() % (DECK - i);
 		int temp = deck[i];
 		deck[i] = deck[shuffle];
 		deck[shuffle] = temp;
 
 	}
+
 }
 int CardManager::DrawCard()
 {
-	int card = deck[top];
-	top++;
+	int card = deck[0];
+	//残りのカードを前に詰める
+	for (int i = 0; i < cardCount - 1; i++)
+	{
+		deck[i] = deck[i + 1];
+	}
+
+	cardCount--;
 
 	return card;
+}
+
+int CardManager::GetCardCount()
+{
+	return cardCount;
 }
